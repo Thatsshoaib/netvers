@@ -1,0 +1,13 @@
+# Node dependencies
+frontend/node_modules/
+backend/node_modules/
+
+# Build files
+client/build/
+dist/
+
+# Sensitive files
+.env
+
+# System files
+.DS_Store

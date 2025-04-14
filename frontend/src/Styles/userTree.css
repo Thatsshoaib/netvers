@@ -1,0 +1,215 @@
+/* 🌳 User Tree Container */
+.tree-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto; /* Enable both axis scroll for mobile */
+  background: #f9f9f9;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  touch-action: pan-x pan-y; /* Allow gestures */
+  -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+}
+
+/* 🖼️ SVG Styling */
+.tree-container svg {
+  min-width: 600px; /* Prevent collapsing */
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+  overflow: visible;
+}
+.scroll-hint {
+  display: none;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .scroll-hint {
+    display: block;
+  }
+}
+
+
+/* 🔗 Link (Connecting Lines) Styling */
+.link {
+  fill: none;
+  stroke: #999;
+  stroke-width: 2px;
+  transition: stroke 0.3s ease-in-out;
+}
+
+.link:hover {
+  stroke: #555;
+}
+
+/* 🟦 Node Box Styling */
+.node rect {
+  width: 120px;
+  height: 50px;
+  fill: #ffffff;
+  stroke: #4a90e2;
+  stroke-width: 2px;
+  rx: 8px;
+  ry: 8px;
+  transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
+}
+
+/* 🎨 Node Hover Effect */
+.node:hover rect {
+  fill: #e3f2fd;
+  stroke: #3178c6;
+}
+
+/* ✍️ Node Text Styling */
+.node text {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  fill: #333;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  transition: fill 0.3s ease-in-out;
+}
+
+.node:hover text {
+  fill: #3178c6;
+}
+
+/* 👆 Cursor Change on Click */
+.node {
+  cursor: pointer;
+}
+
+/* ✅ Responsive Styles */
+
+/* Tablet and Mobile (<= 1024px) */
+@media (max-width: 1024px) {
+  /* General Container Styling */
+  .tree-container {
+    overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
+    white-space: nowrap;
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  /* Adjust SVG size */
+  .tree-container svg {
+    width: 100%;
+    height: 80vh; /* Ensure the SVG takes up most of the height, with some space for titles */
+  }
+
+  /* Adjust Node Box Styling */
+  .node rect {
+    width: 100px;
+    height: 40px;
+  }
+
+  .node text {
+    font-size: 12px; /* Smaller font size for mobile */
+  }
+
+  /* Link Stroke Adjustment */
+  .link {
+    stroke-width: 1.5px; /* Thinner links on mobile for better clarity */
+  }
+}
+
+/* Mobile (<= 480px) */
+@media (max-width: 480px) {
+  .tree-container {
+    padding: 5px; /* Reduce padding further on mobile */
+  }
+
+  .node rect {
+    width: 80px; /* Even smaller nodes */
+    height: 35px;
+  }
+
+  .node text {
+    font-size: 10px; /* Further reduce text size for small screens */
+  }
+
+  /* Adjust link stroke width */
+  .link {
+    stroke-width: 1px; /* Thinner links */
+  }
+
+  /* Adjust tree title for smaller devices */
+  .tree-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .error-message {
+    font-size: 16px;
+  }
+}
+
+/* Large Screens (>= 1440px) */
+@media (min-width: 1440px) {
+  /* For large screens, increase the size of the nodes */
+  .node rect {
+    width: 150px; /* Larger nodes on large screens */
+    height: 60px;
+  }
+
+  .node text {
+    font-size: 16px; /* Larger text */
+  }
+
+  .link {
+    stroke-width: 2.5px; /* Thicker links on larger screens */
+  }
+
+  .tree-container svg {
+    height: 90vh; /* Increase SVG height to make better use of large screen space */
+  }
+
+  .tree-title {
+    font-size: 30px; /* Larger title */
+  }
+}
+
+/* ⚠️ Error Message Styling */
+.error-message {
+  color: #d9534f;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8d7da;
+  border-radius: 5px;
+}
+
+/* 🧑‍💻 Tree Title Styling */
+.tree-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4a90e2;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .tree-container {
+    flex-direction: column; /* Stack dropdown above the SVG */
+    align-items: flex-start;
+  }
+
+  .tree-controls {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .tree-controls select,
+  .tree-controls button {
+    width: 100%;
+    font-size: 14px;
+  }
+}
